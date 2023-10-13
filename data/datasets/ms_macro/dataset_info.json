@@ -1,0 +1,95 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "ms-macro-wellformed_only",
+  "dataset_size": 726469485,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/zhengxuanzenwu/ms-macro-wellformed_only@d6a0dd610474a02e63224176514c0073bb723c7c/data/train-00000-of-00002-0a6f58dc7ee03f61.parquet": {
+      "num_bytes": 164629356,
+      "checksum": null
+    },
+    "hf://datasets/zhengxuanzenwu/ms-macro-wellformed_only@d6a0dd610474a02e63224176514c0073bb723c7c/data/train-00001-of-00002-5262fd5ec1911156.parquet": {
+      "num_bytes": 164721520,
+      "checksum": null
+    },
+    "hf://datasets/zhengxuanzenwu/ms-macro-wellformed_only@d6a0dd610474a02e63224176514c0073bb723c7c/data/test-00000-of-00001-f965dd5a841915d3.parquet": {
+      "num_bytes": 26541566,
+      "checksum": null
+    }
+  },
+  "download_size": 355892442,
+  "features": {
+    "answers": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "passages": {
+      "feature": {
+        "is_selected": {
+          "dtype": "int32",
+          "_type": "Value"
+        },
+        "passage_text": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "url": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "_type": "Sequence"
+    },
+    "query": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "query_id": {
+      "dtype": "int32",
+      "_type": "Value"
+    },
+    "query_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "wellFormedAnswers": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 1082361927,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 674327331,
+      "num_examples": 153725,
+      "shard_lengths": [
+        116863,
+        36862
+      ],
+      "dataset_name": "ms-macro-wellformed_only"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 52142154,
+      "num_examples": 12467,
+      "dataset_name": "ms-macro-wellformed_only"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
