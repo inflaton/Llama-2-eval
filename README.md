@@ -25,7 +25,7 @@ conda install pytorch::pytorch torchvision torchaudio -c pytorch
 On Linux/WSL2:
 
 ```
-conda install -y pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 -c pytorch -c nvidia
 ```
 
 2. Clone this repo

@@ -1,5 +1,6 @@
 faiss-cpu==1.7.4
 langchain==0.1.13
+langchain-openai==0.1.1
 transformers==4.36.2
 python-dotenv==1.0.1
 datasets==2.18.0
@@ -8,3 +9,4 @@ rouge_score==0.1.2
 SentencePiece==0.2.0
 protobuf==5.26.1
 bitsandbytes==0.42.0
+accelerate==0.28.0
