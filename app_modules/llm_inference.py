@@ -32,7 +32,7 @@ class LLMInference(metaclass=abc.ABCMeta):
         return self.chain
 
     def run_chain(self, chain, inputs, callbacks: Optional[List] = []):
-        return chain(inputs, callbacks)
+        return chain.invoke(inputs, {"callbacks": callbacks})
 
     def call_chain(
         self,

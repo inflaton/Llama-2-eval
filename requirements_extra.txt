@@ -1,5 +1,0 @@
-gpt4all
-pygpt4all
-llama-cpp-python
-pyllamacpp
-chromadb

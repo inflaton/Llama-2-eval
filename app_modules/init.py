@@ -1,13 +1,10 @@
 """Main entrypoint for the app."""
+
 import os
 from typing import Optional
 from timeit import default_timer as timer
 from dotenv import find_dotenv, load_dotenv
-from langchain.callbacks.base import BaseCallbackHandler
-from app_modules.llm_loader import LLMLoader
 import datetime
-
-from app_modules.utils import get_device_types, init_settings
 
 found_dotenv = find_dotenv(".env")
 
@@ -20,6 +17,10 @@ if os.environ.get("LANGCHAIN_DEBUG") == "true":
     import langchain
 
     langchain.debug = True
+
+from app_modules.utils import get_device_types, init_settings
+from langchain_core.callbacks import BaseCallbackHandler
+from app_modules.llm_loader import LLMLoader
 
 # Constants
 init_settings()

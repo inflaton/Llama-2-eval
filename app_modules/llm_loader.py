@@ -5,10 +5,10 @@ from queue import Queue
 from typing import Any, Optional
 
 import torch
-from langchain.callbacks.base import BaseCallbackHandler
-from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
-from langchain.chat_models import ChatOpenAI
-from langchain.llms import (
+from langchain_core.callbacks import BaseCallbackHandler
+from langchain_core.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain_openai import ChatOpenAI
+from langchain_community.llms import (
     HuggingFaceTextGenInference,
     CTransformers,
     GPT4All,
@@ -16,7 +16,7 @@ from langchain.llms import (
     LlamaCpp,
     OpenAI,
 )
-from langchain.schema import LLMResult
+from langchain_core.outputs import LLMResult
 from transformers import (
     AutoConfig,
     AutoModelForCausalLM,
@@ -127,9 +127,15 @@ class LLMLoader:
             hf_pipeline_device_type = "cpu"
 
         using_cuda = hf_pipeline_device_type.startswith("cuda")
-        torch_dtype = torch.float16 if using_cuda else torch.float32
+        using_mps = hf_pipeline_device_type.startswith("mps")
+
         if os.environ.get("USING_TORCH_BFLOAT16") == "true":
             torch_dtype = torch.bfloat16
+        elif using_cuda or using_mps:
+            torch_dtype = torch.float16
+        else:
+            torch_dtype = torch.float32
+
         load_quantized_model = os.environ.get("LOAD_QUANTIZED_MODEL")
 
         print(f"  hf_pipeline_device_type: {hf_pipeline_device_type}")
@@ -141,7 +147,7 @@ class LLMLoader:
             load_in_4bit=load_quantized_model == "4bit",
             bnb_4bit_use_double_quant=load_quantized_model == "4bit",
             load_in_8bit=load_quantized_model == "8bit",
-            bnb_8bit_use_double_quant=load_quantized_model == "8bit",
+            # bnb_8bit_use_double_quant=load_quantized_model == "8bit",
         )
 
         callbacks = []
